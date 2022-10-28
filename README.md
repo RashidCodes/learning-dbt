@@ -30,13 +30,13 @@ The default behaviour here is that `dbt` will append your custome schema to the 
 
 - Cluster by 
 
-```sql
-{{
-   config(
-      materialize='table',
-      cluster_by=['session_start']
-   )
-}}
+	```sql
+	{{
+	   config(
+	      materialize='table',
+	      cluster_by=['session_start']
+	   )
+	}}
 
 ```
 
@@ -55,12 +55,6 @@ How do you want to persist your model in the warehouse? Materialisations in `dbt
 - view 
 - custom
 
-
-<br/>
-
-## Sources 
-
-Sources are used to describe tables loaded by means other than dbt. The tables uploaded from `s3` are all source tables
 
 <br/>
 

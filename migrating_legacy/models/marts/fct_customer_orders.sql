@@ -10,12 +10,11 @@ select
     orders.status as order_status,
     payments.status as payment_status
 
--- change table references
 from {{ source('jaffle_shop', 'orders') }} as orders
 
 join (
-      select 
-        first_name || ' ' || last_name as name, 
+	select 
+	first_name || ' ' || last_name as name, 
         * 
       from {{ source('jaffle_shop', 'customers') }} 
 ) customers
@@ -48,21 +47,3 @@ join (
       select 
         first_name || ' ' || last_name as name, 
         * 
-      from {{ source('jaffle_shop', 'customers') }}
-    ) b
-    on a.user_id = b.id
-
-    left outer join {{ source('stripe', 'payment') }}  c
-    on a.id = c.orderid
-
-    where a.status NOT IN ('pending') and c.status != 'fail'
-
-    group by b.id, b.name, b.last_name, b.first_name
-
-) customer_order_history
-on orders.user_id = customer_order_history.customer_id
-
-left outer join {{ source('stripe', 'payment') }} as payments
-on orders.id = payments.orderid
-
-where payments.status != 'fail'

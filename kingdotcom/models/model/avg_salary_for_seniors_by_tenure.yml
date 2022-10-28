@@ -1,0 +1,15 @@
+version: 2 
+
+
+models:
+  - name: avg_salary_for_seniors_by_tenure 
+    columns:
+      - name: average_salaries
+        tests:
+          - not_null
+      - name: YEAR_BECAME_SENIOR 
+        tests:
+          - year_greater_than:
+              min_year: 1500 
+      - name: num_of_emp 
+      - name: insert_at

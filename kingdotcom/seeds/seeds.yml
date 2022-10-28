@@ -1,0 +1,15 @@
+version: 2
+
+seeds:
+  - name: departments
+    config:
+      database: hr
+      schema: source
+      +column_types:
+        updated_at: date
+
+  - name: minimum_legal_salaries
+    config:
+      database: hr
+      schema: source
+

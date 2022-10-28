@@ -1,0 +1,17 @@
+version: 2 
+
+sources: 
+  - name: hr
+    database: hr
+    schema: source 
+    tables:
+      - name: dept_emp
+      - name: dept_manager 
+      - name: employees
+      - name: titles
+
+  - name: payroll
+    database: payroll
+    schema: source 
+    tables:
+      - name: salaries
